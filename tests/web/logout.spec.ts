@@ -1,5 +1,5 @@
 import { test, expect } from "../../fixtures/pageFixtures";
-import { getRequiredEnv } from "../../utils/helper";
+import { getValidLoginCredentials } from "../../utils/loginTestData";
 
 test("Customer can log out successfully @master @sanity @regression @web", async ({
   homePage,
@@ -8,8 +8,7 @@ test("Customer can log out successfully @master @sanity @regression @web", async
   logoutPage,
   page,
 }) => {
-  const email = getRequiredEnv("APP_EMAIL");
-  const password = getRequiredEnv("APP_PASSWORD");
+  const { email, password } = getValidLoginCredentials();
 
   await test.step("1) Log in using valid customer credentials", async () => {
     await homePage.goToLogin();

@@ -14,8 +14,8 @@ test("Invalid customer login is rejected @master @sanity @regression @web", asyn
     await loginPage.login("invalid-login-test@example.invalid", "InvalidPassword123!");
   });
 
-  await test.step("3) Verify the invalid-credentials warning and failed authentication", async () => {
-    expect(await loginPage.isInvalidCredentialsWarningVisible()).toBeTruthy();
+  await test.step("3) Verify a login error and failed authentication", async () => {
+    expect(await loginPage.isLoginErrorVisible()).toBeTruthy();
     await expect(page).toHaveURL(/route=account\/login/);
   });
 

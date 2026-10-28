@@ -1,5 +1,5 @@
 import { test, expect } from "../../fixtures/pageFixtures";
-import { getRequiredEnv } from "../../utils/helper";
+import { getValidLoginCredentials } from "../../utils/loginTestData";
 
 test("Customer login succeeds with configured credentials @master @sanity @regression @web", async ({
   homePage,
@@ -7,8 +7,7 @@ test("Customer login succeeds with configured credentials @master @sanity @regre
   accountPage,
   page,
 }) => {
-  const email = getRequiredEnv("APP_EMAIL");
-  const password = getRequiredEnv("APP_PASSWORD");
+  const { email, password } = getValidLoginCredentials();
 
   await test.step("1) Navigate to My Account > Login", async () => {
     await homePage.goToLogin();
